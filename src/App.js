@@ -22,6 +22,17 @@ export default function App() {
             )
         );
     }
+    function handleClearList() {
+        if (items.length === 0) {
+            alert("Your list is already empty!");
+            return;
+        }
+        const confirmed = window.confirm(
+            "Are you sure you want to clear the list?"
+        );
+        if (!confirmed) return;
+        setItems([]);
+    }
 
     return (
         <div className="app">
@@ -31,6 +42,7 @@ export default function App() {
                 items={items}
                 onDeleteItem={handleDeleteItem}
                 onTogglePacked={handleTogglePacked}
+                onClearList={handleClearList}
             />
             <Stats items={items} />
         </div>
